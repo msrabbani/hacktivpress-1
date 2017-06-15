@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.SECRET_KEY;
 
 function login(req, res){
-  console.log(req.body.email);
+  console.log(req.body.username);
   console.log(req.body.password);
-  Users.findOne({email : req.body.email}, function(err, user){
+  Users.findOne({username : req.body.username}, function(err, user){
     if(err){
       res.json({err})
     } else {
@@ -16,7 +16,7 @@ function login(req, res){
         res.send('user not found');
       }
       else if(bcrypt.compareSync(req.body.password, user.password)){
-        let token = jwt.sign({email: user.email, role: user.role, userid: user._id}, secret, {expiresIn:'1h'})
+        let token = jwt.sign({username: user.username, userid: user._id}, secret, {expiresIn:'1h'})
         console.log('success');
         res.send({token: token, user_id: user._id, user_name: user.name});
       } else {
@@ -28,7 +28,7 @@ function login(req, res){
 }
 
 function getAll(req, res) {
-  Users.find().populate('thread_id answer_id')
+  Users.find().populate('articles_id')
   .exec(function(err, result) {
     if (err) {
       res.send(err.message);
@@ -40,7 +40,7 @@ function getAll(req, res) {
 }
 
 function getSingle(req, res) {
-  Users.findById(req.params.id).populate('thread_id answer_id')
+  Users.findById(req.params.id).populate('articles_id')
   .exec(function(err, result) {
     if (err) {
       res.send(err.message);
@@ -55,11 +55,12 @@ function createUser(req, res) {
   let hash = bcrypt.hashSync(req.body.password, 8);
 
   Users.create({
-    name:       req.body.name,
-    email:      req.body.email,
-    password:   hash,
-    role:       req.body.role || 'user',
-    created_at: new Date()
+    name:         req.body.name,
+    username:     req.body.username,
+    email:        req.body.email,
+    password:     hash,
+    articles_id:  req.body.articles_id,
+    created_at:   new Date()
   }, function(err, result) {
     if (err) {
       res.send(err.message);
@@ -99,11 +100,12 @@ function updateUser(req, res) {
       _id: user[0]._id
     }, {
       $set: {
-        name:       req.body.name || user[0].name,
-        email:      req.body.email || user[0]._email,
-        password:   hash || user[0].password,
-        role:       req.body.role || user[0].role,
-        updated_at: new Date()
+        name:         req.body.name || user[0].name,
+        username:     req.body.username || user[0].username,
+        email:        req.body.email || user[0]._email,
+        password:     hash || user[0].password,
+        articles_id:  req.body.articles_id || user[0].articles_id,
+        updated_at:   new Date()
       }
     }, (err, result) => {
       if (err) return res.send(err.message)
