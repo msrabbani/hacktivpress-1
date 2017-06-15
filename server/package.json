@@ -1,0 +1,25 @@
+{
+  "name": "live-coding",
+  "version": "1.0.0",
+  "description": "Live Coding Hacktiv8 Phase 2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "live-coding",
+    "hacktiv8",
+    "phase2"
+  ],
+  "author": "raynormw",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.10.6"
+  }
+}
