@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
   .article {
-    margin-top: 8em;
+    margin: 8em auto;
     height: 30em;
     flex: 1;
   }
