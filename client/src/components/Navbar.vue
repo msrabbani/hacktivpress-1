@@ -4,7 +4,7 @@
       <div class="nav-left">
         <router-link :to="{ name: 'Index'}">
           <a class="nav-item">
-            <img src="../assets/ghost_logo.png" alt="Hacktivpress logo">&nbsp;Hacktivpress
+            <img src="../assets/logo.png" alt="Hacktivpress logo">&nbsp;Hacktivpress
           </a>
         </router-link>
         <div class="nav-item is-hidden-mobile">
@@ -202,7 +202,7 @@ export default {
     },
     register () {
       let self = this
-      axios.post('http://localhost:3000/users/signup', {name: this.name, email: this.email, password: this.password})
+      axios.post('http://localhost:3000/users/signup', {name: this.name, email: this.email, username: this.username, password: this.password})
       .then((res) => {
         console.log(res.data)
         this.greet = 'Thank you! Please login to continue..'
