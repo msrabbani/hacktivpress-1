@@ -30,6 +30,8 @@
         <div class="nav-item">
           <button class="nav-item button is-danger is-outlined" v-show="!verified" @click="register_modal = true"><i class="material-icons">account_circle</i>&nbsp;Register</button>&nbsp;&nbsp;
           <button class="nav-item button is-primary is-outlined" v-show="!verified" @click="login_modal = true"><i class="material-icons">launch</i>&nbsp;Login</button>
+          <button class="nav-item button is-success is-outlined" v-show="verified" @click=""><i class="material-icons">add</i>New Blog</button>&nbsp;&nbsp;
+          <!-- <router-link :to="{ name: 'Index' }">Back to the front page</router-link> -->
           <button class="nav-item button is-primary is-outlined" v-show="verified" @click="confirm"><i class="material-icons">exit_to_app</i>&nbsp;Logout</button>
         </div>
       </div>

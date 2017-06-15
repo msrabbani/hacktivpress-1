@@ -3,8 +3,8 @@
     <div class="container">
       <div v-for="article in articles">
         <div class="article">
-          <p>{{article.title}}</p><br><br>
-          <!-- <a class="article_title"><router-link :to="{ name: 'Thread', params: {id: thread._id} }"></router-link></a> -->
+          <a class="article_title"><router-link :to="{ name: 'Article', params: {id: article._id} }">{{article.title}}</router-link></a>
+          <br><br>
           <small><span class="tag is-info is-small">Posted by: {{article.user_name}}</span></small>
           <small><span class="tag is-success is-small">category: {{article.category}}</span></small>
           <hr>
@@ -48,8 +48,8 @@ export default {
     margin: 1em;
   }
 
-  p {
-    font-size: 1.3em;
+  a {
+    font-size: 1.2em;
   }
 
   hr {

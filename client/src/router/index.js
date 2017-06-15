@@ -5,6 +5,7 @@ import 'buefy/lib/buefy.css'
 import { SweetModal, SweetModalTab } from 'sweet-modal-vue'
 import Hello from '@/components/Hello'
 import Index from '@/components/Index'
+import Article from '@/components/Article'
 
 Vue.use(Router)
 Vue.use(Buefy)
@@ -12,7 +13,8 @@ Vue.use(SweetModal, SweetModalTab)
 
 export default new Router({
   routes: [
+    { path: '/hello', name: 'Hello', component: Hello },
     { path: '/', name: 'Index', component: Index },
-    { path: '/hello', name: 'Hello', component: Hello }
+    { path: '/articles/:id', name: 'Article', component: Article }
   ]
 })
