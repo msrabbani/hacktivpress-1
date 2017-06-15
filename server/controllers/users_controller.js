@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const secret = process.env.SECRET_KEY;
 
-function login(req, res){
+function signIn(req, res){
   console.log(req.body.username);
   console.log(req.body.password);
   Users.findOne({username : req.body.username}, function(err, user){
@@ -51,7 +51,7 @@ function getSingle(req, res) {
   });
 }
 
-function createUser(req, res) {
+function signUp(req, res) {
   let hash = bcrypt.hashSync(req.body.password, 8);
 
   Users.create({
@@ -115,5 +115,5 @@ function updateUser(req, res) {
 }
 
 module.exports = {
-  login, getAll, getSingle, createUser, deleteUser, updateUser
+  signIn, getAll, getSingle, signUp, deleteUser, updateUser
 }

@@ -19,8 +19,8 @@ List of user signin and signup:
 
 |      **Route**     | **HTTP** |                       **Description**                      |
 |--------------------|----------|------------------------------------------------------------|
-| /signup            | POST     | Sign up with new user info                                 |
-| /signin            | POST     | Sign in while get an access token based on credentials     |
+| /users/signup      | POST     | Sign up with new user info                                 |
+| /users/signin      | POST     | Sign in while get an access token based on credentials     |
 
 ## Usage
 With only npm:
